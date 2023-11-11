@@ -1,10 +1,15 @@
 const mysql = require('mysql')
 
+// demografia shoujo, seinen, josei, shounen, kodomo
+// descripcion 
+// imagen
+// titulo
+
 const conexion = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    database:'node_js_db'
+    database:'animes_db'
 })
 
 conexion.connect((error)=>{

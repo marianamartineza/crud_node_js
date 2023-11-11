@@ -33,19 +33,31 @@
     </div>
   </nav>
   <div class="container">
-    <h2 class="mt-4 mb-3 text-center">Crear un nuevo usuario</h2> 
-    <form id="form" action="/save" method="POST">
+    <h2 class="mt-4 mb-3 text-center">Crear un nuevo anime</h2> 
+
+    <form id="form" action="/save-image" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label" for="nombre">Nombre</label>
             <input class="form-control" id="nombre" name="nombre" type="text">
         </div>
         <div class="mb-3">
-            <label class="form-label" for="rol">rol</label>
-            <select name="rol" id="rol" aria-label="default select for role" class="form-select">
-                <option value="admin">Admin</option>
-                <option value="developer">Developer</option>
+            <label class="form-label" for="demografia">demografia</label>
+            <select name="demografia" id="demografia" aria-label="default select for demografia" class="form-select">
+                <option value="shoujo">Shoujo</option>
+                <option value="shounen">Shounen</option>
+                <option value="josei">Josei</option>
+                <option value="seinen">Seinen</option>
+                <option value="kodomo">Kodomo</option>
             </select>
         </div>
+        <div class="mb-3">
+          <label class="form-label" for="descripcion">Descripcion</label>
+          <textarea class="form-control" id="descripcion" name="descripcion" type="text"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="photo">Imagen:</label>
+        <input class="form-control" type="file" name="photo" id="photo" />
+      </div>
         <button class="btn btn-primary mt-4" type="submit">Guardar</button>
         <a href="/" class="btn btn-secondary mt-4">Cancelar</a>
     </form>

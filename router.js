@@ -3,8 +3,10 @@ const router = express.Router()
 
 const conexion = require('./database/db')
 
+
+
 router.get('/',(req,res)=>{
-    conexion.query('SELECT * from usuarios',(error,results)=>{
+    conexion.query('SELECT * from animes',(error,results)=>{
         if(error){
             throw error
         }else{
@@ -19,11 +21,11 @@ router.get('/create',(req,res) => {
 
 router.get('/edit/:id',(req,res) => {
     const id = req.params.id;
-    conexion.query('SELECT * from usuarios WHERE id=?',[id],(error,results)=>{
+    conexion.query('SELECT * from animes WHERE id=?',[id],(error,results)=>{
         if(error){
             throw error
         }else{
-            res.render('edit',{user: results[0]});
+            res.render('edit',{anime: results[0]});
         }
     })
 })
@@ -36,7 +38,7 @@ router.post('/update',crud.update);
 
 router.get('/delete/:id',(req,res) => {
     const id = req.params.id; 
-    conexion.query('DELETE FROM usuarios WHERE id = ?',[id],(error,results) => {
+    conexion.query('DELETE FROM animes WHERE id = ?',[id],(error,results) => {
         if(error){
             throw error
         }else{

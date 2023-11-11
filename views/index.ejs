@@ -36,21 +36,30 @@
             <thead class="bg-primary text-white">
                 <tr class="table-primary">
                     <th scope="col">id</th>
+                    <th scope="col">imagen</th>
                     <th scope="col">nombre</th>
-                    <th scope="col">rol</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">demografia</th>
                     <th scope="col">acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <% results.forEach((user) => {
+                <% results.forEach((anime) => {
                     %>
                     <tr>
-                        <td><%= user.id %></td>
-                        <td><%= user.nombre %></td>
-                        <td><%= user.rol %></td>
+                        <td><%= anime.id %></td>
                         <td>
-                            <a href="./edit/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-edit-alt'></i></a>
-                            <a href="./delete/<%= user.id %>" class="btn btn-outline-danger "><i class='bx bxs-trash '></i></a>
+                          <div class="mh-200 container text-center align-items-center"" style="width: 200px; height: auto;">
+                            <img src="<%= anime.imagen %>" class="rounded mx-auto d-block img-thumbnail" alt="<%= anime.nombre %>">
+                          </div>
+                        </td>
+                        <td><%= anime.nombre %></td>
+                        <td><%= anime.descripcion %></td>
+                        <td><%= anime.demografia %></td>
+                        <td>
+                            <a href="./profile/<%= anime.id %>" class="btn btn-outline-success"><i class='bx bxs-info-circle'></i></a>
+                            <a href="./edit/<%= anime.id %>" class="btn btn-outline-info"><i class='bx bxs-edit-alt'></i></a>
+                            <a href="./delete/<%= anime.id %>" class="btn btn-outline-danger "><i class='bx bxs-trash '></i></a>
                         </td>
                     </tr>
                 <% }) %>

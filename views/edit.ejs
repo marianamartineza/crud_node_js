@@ -32,24 +32,38 @@
       </div>
     </div>
   </nav>
-  <% if (user) { %>
-  <div class="container">
-    <h2 class="mt-4 mb-3 text-center">Editar un usuario</h2> 
-    <form id="form" action="/update" method="POST">
-        <input class="form-control" id="id" name="id" type="text" value="<%= user.id %>" hidden>
+  <% if (anime) { %>
+    <form id="form" action="/update-image" method="POST" enctype="multipart/form-data">
+      <input class="form-control" id="id" name="id" type="text" value="<%= anime.id %>" hidden>
+      <div class="container">
+        <h2 class="mt-4 mb-3 text-center">Editar un anime</h2> 
         <div class="mb-3">
-            <label class="form-label" for="nombre">Nombre</label>
-            <input class="form-control" id="nombre" name="nombre" type="text" value="<%= user.nombre %>">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="rol">rol</label>
-            <select name="rol" id="rol" aria-label="default select for role" class="form-select" >
-                <option <%= user.rol == 'admin' ? "selected" : '' %> value="admin">Admin</option>
-                <option <%= user.rol == 'developer' ? "selected" : '' %> value="developer">Developer</option>
-            </select>
-        </div>
-        <button class="btn btn-primary mt-4" type="submit">Guardar</button>
-        <a href="/" class="btn btn-secondary mt-4">Cancelar</a>
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-control" id="nombre" name="nombre" type="text" value="<%= anime.nombre %>">
+      </div>
+      <div class="mb-3">
+          <label class="form-label" for="demografia">demografia</label>
+          <select name="demografia" id="demografia" aria-label="default select for demografia" class="form-select">
+              <option <%= anime.demografia == 'shoujo' ? "selected" : '' %> value="shoujo">Shoujo</option>
+              <option <%= anime.demografia == 'shounen' ? "selected" : '' %> value="shounen">Shounen</option>
+              <option <%= anime.demografia == 'josei' ? "selected" : '' %> value="josei">Josei</option>
+              <option <%= anime.demografia == 'seinen' ? "selected" : '' %> value="seinen">Seinen</option>
+              <option <%= anime.demografia == 'kodomo' ? "selected" : '' %> value="kodomo">Kodomo</option>
+          </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="descripcion">Descripcion</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" type="text"><%= anime.descripcion %></textarea>
+    </div>
+    <div class="mb-3">
+      <% if(anime.imagen){ %>
+        <img src="<%= anime.imagen %>" class="rounded mx-auto d-block img-thumbnail" alt="<%= anime.nombre %>">
+      <% } %>
+        <label class="form-label" for="photo">Imagen:</label>
+        <input class="form-control" type="file" name="photo" id="photo"/>
+    </div>
+      <button class="btn btn-primary mt-4" type="submit">Guardar</button>
+      <a href="/" class="btn btn-secondary mt-4">Cancelar</a>
     </form>
     </div>
     <% } %>
