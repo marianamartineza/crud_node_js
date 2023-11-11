@@ -42,7 +42,7 @@ app.post('/save-image', (req, res) => {
 
     const photo = req.files.photo;
     const extension = photo.mimetype.split('/')[1];
-    const validExtensions = ['png','jpg','jpeg'];
+    const validExtensions = ['png','jpg','jpeg','jfif'];
 
     if (!validExtensions.includes(extension)) {
         return res.status(400).send('Not valid file extension');
@@ -86,7 +86,7 @@ app.post('/update-image', (req, res) => {
 
             const photo = req.files.photo;
             const extension = photo.mimetype.split('/')[1];
-            const validExtensions = ['png','jpg','jpeg'];
+            const validExtensions = ['png','jpg','jpeg','jfif'];
 
             if (!validExtensions.includes(extension)) {
                 return res.status(400).send('Not valid file extension');
