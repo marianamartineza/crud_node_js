@@ -3,8 +3,6 @@ const router = express.Router()
 
 const conexion = require('./database/db')
 
-
-
 router.get('/',(req,res)=>{
     conexion.query('SELECT * from animes',(error,results)=>{
         if(error){
@@ -30,11 +28,16 @@ router.get('/edit/:id',(req,res) => {
     })
 })
 
-const crud = require('./controllers/crud')
-
-router.post('/save',crud.save);
-
-router.post('/update',crud.update);
+router.get('/profile/:id',(req,res) => {
+    const id = req.params.id;
+    conexion.query('SELECT * from animes WHERE id=?',[id],(error,results)=>{
+        if(error){
+            throw error
+        }else{
+            res.render('profile',{anime: results[0]});
+        }
+    })
+})
 
 router.get('/delete/:id',(req,res) => {
     const id = req.params.id; 
