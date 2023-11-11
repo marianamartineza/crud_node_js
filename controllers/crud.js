@@ -11,3 +11,16 @@ exports.save = (req,res) => {
         }
     })
 }
+
+exports.update = (req,res) => {
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const rol = req.body.rol;
+    conexion.query('UPDATE usuarios SET ? WHERE id = ?',[{nombre:nombre, rol:rol}, id],(error,results)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/');
+        }
+    })
+}
