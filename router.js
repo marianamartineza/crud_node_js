@@ -39,6 +39,17 @@ router.get('/profile/:id',(req,res) => {
     })
 })
 
+router.get('/delete_confirmation/:id',(req,res) => {
+    const id = req.params.id;
+    conexion.query('SELECT * from animes WHERE id=?',[id],(error,results)=>{
+        if(error){
+            throw error
+        }else{
+            res.render('delete',{anime: results[0]});
+        }
+    })
+})
+
 router.get('/delete/:id',(req,res) => {
     const id = req.params.id; 
     conexion.query('DELETE FROM animes WHERE id = ?',[id],(error,results) => {
