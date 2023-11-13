@@ -1,10 +1,5 @@
 const mysql = require('mysql')
 
-// demografia shoujo, seinen, josei, shounen, kodomo
-// descripcion 
-// imagen
-// titulo
-
 const conexion = mysql.createConnection({
     host:'localhost',
     user:'root',

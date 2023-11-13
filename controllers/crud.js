@@ -1,7 +1,5 @@
 const conexion = require("../database/db")
 
-const { v4: uuid } = require('uuid');
-
 exports.save = (req,res) => {
     const nombre = req.body.nombre;
     const descripcion = req.body.descripcion;

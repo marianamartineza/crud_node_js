@@ -23,7 +23,6 @@ const { v4: uuid } = require('uuid');
 const conexion = require('./database/db');
 
 app.use(express.urlencoded({extended:false}));
-// app.use(express.json);
 
 app.use('/',require('./router'))
 
